@@ -20,6 +20,7 @@
         <module>osgi</module>
         <module>xds</module>
 		<module>config</module>
+        <module>iti42-fm</module>
     </modules>
 
     <dependencies>
