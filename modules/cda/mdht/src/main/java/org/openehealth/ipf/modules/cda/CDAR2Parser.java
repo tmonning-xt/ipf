@@ -23,12 +23,13 @@ import java.util.Map;
 import javax.xml.transform.Source;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.mdht.uml.cda.CDAPackage;
+import org.eclipse.mdht.uml.cda.ClinicalDocument;
+import org.eclipse.mdht.uml.cda.DocumentRoot;
+import org.eclipse.mdht.uml.cda.internal.resource.CDAResource;
 import org.openehealth.ipf.commons.core.modules.api.ParseException;
 import org.openehealth.ipf.commons.core.modules.api.Parser;
-import org.openhealthtools.mdht.uml.cda.CDAPackage;
-import org.openhealthtools.mdht.uml.cda.ClinicalDocument;
-import org.openhealthtools.mdht.uml.cda.DocumentRoot;
-import org.openhealthtools.mdht.uml.cda.internal.resource.CDAResource;
+
 /**
  * @author Stefan Ivanov
  */

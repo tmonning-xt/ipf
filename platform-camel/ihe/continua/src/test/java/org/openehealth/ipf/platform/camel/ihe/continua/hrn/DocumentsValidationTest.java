@@ -15,10 +15,10 @@
  */
 package org.openehealth.ipf.platform.camel.ihe.continua.hrn;
 
+import org.eclipse.mdht.uml.cda.ClinicalDocument;
+import org.eclipse.mdht.uml.cda.util.CDAUtil;
 import org.junit.Test;
 import org.openehealth.ipf.modules.cda.CDAR2Validator;
-import org.openhealthtools.mdht.uml.cda.ClinicalDocument;
-import org.openhealthtools.mdht.uml.cda.util.CDAUtil;
 
 import java.io.InputStream;
 

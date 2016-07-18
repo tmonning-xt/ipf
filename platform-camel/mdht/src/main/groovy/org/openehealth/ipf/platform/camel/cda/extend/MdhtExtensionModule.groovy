@@ -17,11 +17,11 @@ package org.openehealth.ipf.platform.camel.cda.extend
 
 import org.apache.camel.builder.DataFormatClause
 import org.apache.camel.model.ProcessorDefinition
+import org.eclipse.mdht.uml.cda.ClinicalDocument
 import org.openehealth.ipf.modules.cda.CDAR2Validator
 import org.openehealth.ipf.platform.camel.cda.dataformat.MdhtDataFormat
 import org.openehealth.ipf.platform.camel.core.extend.CoreExtensionModule
 import org.openehealth.ipf.platform.camel.core.model.ValidatorAdapterDefinition
-import org.openhealthtools.mdht.uml.cda.ClinicalDocument
 
 import static org.apache.camel.builder.Builder.bodyAs
 

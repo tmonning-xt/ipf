@@ -24,28 +24,44 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.openehealth.ipf.oht.mdht</groupId>
-            <artifactId>ipf-oht-mdht-uml-cda</artifactId>
+            <groupId>org.eclipse.emf</groupId>
+            <artifactId>org.eclipse.emf.common</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.openehealth.ipf.oht.mdht</groupId>
-            <artifactId>ipf-oht-mdht-uml-cda-ccd</artifactId>
+            <groupId>org.eclipse.emf</groupId>
+            <artifactId>org.eclipse.emf.ecore</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.openehealth.ipf.oht.mdht</groupId>
-            <artifactId>ipf-oht-mdht-uml-cda-hitsp</artifactId>
+            <groupId>org.eclipse.emf</groupId>
+            <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.openehealth.ipf.oht.mdht</groupId>
-            <artifactId>ipf-oht-mdht-uml-cda-consol</artifactId>
+            <groupId>org.eclipse.mdht</groupId>
+            <artifactId>org.eclipse.mdht.emf.runtime</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.openehealth.ipf.oht.mdht</groupId>
-            <artifactId>ipf-oht-mdht-uml-cda-ihe</artifactId>
+            <groupId>org.eclipse.mdht</groupId>
+            <artifactId>org.eclipse.mdht.uml.cda</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.openehealth.ipf.oht.mdht</groupId>
-            <artifactId>ipf-oht-mdht-uml-cda-cdt</artifactId>
+            <groupId>org.eclipse.mdht</groupId>
+            <artifactId>org.eclipse.mdht.uml.hl7.datatypes</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.mdht</groupId>
+            <artifactId>org.eclipse.mdht.uml.hl7.rim</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.mdht</groupId>
+            <artifactId>org.eclipse.mdht.uml.hl7.vocab</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.ocl</groupId>
+            <artifactId>ecore</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.uml2</groupId>
+            <artifactId>types</artifactId>
         </dependency>
     </dependencies>
     <build>

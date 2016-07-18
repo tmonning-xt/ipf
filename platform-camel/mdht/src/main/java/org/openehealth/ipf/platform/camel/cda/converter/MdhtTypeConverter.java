@@ -21,8 +21,8 @@ import java.nio.charset.Charset;
 
 import org.apache.camel.Converter;
 import org.apache.camel.Exchange;
+import org.eclipse.mdht.uml.cda.ClinicalDocument;
 import org.openehealth.ipf.modules.cda.CDAR2Renderer;
-import org.openhealthtools.mdht.uml.cda.ClinicalDocument;
 
 @Converter
 public class MdhtTypeConverter {

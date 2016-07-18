@@ -15,37 +15,49 @@
  */
 package org.openehealth.ipf.modules.cda;
 
-
-import org.openhealthtools.mdht.uml.cda.CDAPackage;
-import org.openhealthtools.mdht.uml.cda.ccd.CCDPackage;
-import org.openhealthtools.mdht.uml.cda.consol.ConsolPackage;
-import org.openhealthtools.mdht.uml.cda.hitsp.HITSPPackage;
-import org.openhealthtools.mdht.uml.cda.ihe.IHEPackage;
+import org.eclipse.mdht.uml.cda.CDAPackage;
 
 public final class CDAR2Utils {
 
-    static {
-        @SuppressWarnings("unused")
-        CDAPackage cdaPackageInstance = CDAPackage.eINSTANCE;
-    }
+    private static final CDAPackage CDA_PACKAGE = CDAPackage.eINSTANCE;
 
     private CDAR2Utils() {
     }
 
-    public static CCDPackage initCCD() {
-        return CCDPackage.eINSTANCE;
+    public static CDAPackage init() {
+        return CDA_PACKAGE;
     }
 
-    public static HITSPPackage initHITSPC32() {
-        return HITSPPackage.eINSTANCE;
+    /**
+     * @deprecated use {@link #init()}.
+     */
+    @Deprecated
+    public static CDAPackage initCCD() {
+        return CDA_PACKAGE;
     }
 
-    public static ConsolPackage initConsolCDA() {
-        return ConsolPackage.eINSTANCE;
+    /**
+     * @deprecated use {@link #init()}.
+     */
+    @Deprecated
+    public static CDAPackage initHITSPC32() {
+        return CDA_PACKAGE;
     }
 
-    public static IHEPackage initIHEPCC() {
-        return IHEPackage.eINSTANCE;
+    /**
+     * @deprecated use {@link #init()}.
+     */
+    @Deprecated
+    public static CDAPackage initConsolCDA() {
+        return CDA_PACKAGE;
+    }
+
+    /**
+     * @deprecated use {@link #init()}.
+     */
+    @Deprecated
+    public static CDAPackage initIHEPCC() {
+        return CDA_PACKAGE;
     }
 
 }

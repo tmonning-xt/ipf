@@ -15,8 +15,8 @@
  */
 package org.openehealth.ipf.platform.camel.ihe.continua.hrn.converters;
 
-import org.openhealthtools.mdht.uml.cda.ClinicalDocument;
-import org.openhealthtools.mdht.uml.cda.util.CDAUtil;
+import org.eclipse.mdht.uml.cda.ClinicalDocument;
+import org.eclipse.mdht.uml.cda.util.CDAUtil;
 import org.springframework.core.convert.converter.Converter;
 
 import java.io.ByteArrayInputStream;

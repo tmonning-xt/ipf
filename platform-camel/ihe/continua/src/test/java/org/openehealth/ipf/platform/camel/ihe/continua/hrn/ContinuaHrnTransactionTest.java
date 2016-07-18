@@ -25,6 +25,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.cxf.transport.servlet.CXFServlet;
+import org.eclipse.mdht.uml.cda.ClinicalDocument;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -36,7 +37,6 @@ import org.openehealth.ipf.commons.ihe.xds.core.responses.Status;
 import org.openehealth.ipf.modules.cda.CDAR2Parser;
 import org.openehealth.ipf.platform.camel.ihe.ws.StandardTestContainer;
 import org.openehealth.ipf.platform.camel.ihe.xds.core.converters.EbXML30Converters;
-import org.openhealthtools.mdht.uml.cda.ClinicalDocument;
 
 import static org.junit.Assert.assertEquals;
 

@@ -15,10 +15,10 @@
  */
 package org.openehealth.ipf.modules.cda;
 
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.mdht.uml.cda.util.CDAUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.eclipse.emf.common.util.Diagnostic;
-import org.openhealthtools.mdht.uml.cda.util.CDAUtil.ValidationHandler;
 
 /**
  * Validation Handler
@@ -26,9 +26,9 @@ import org.openhealthtools.mdht.uml.cda.util.CDAUtil.ValidationHandler;
  * @author Stefan Ivanov
  *
  */
-public class DefaultValidationHandler implements ValidationHandler {
+public class DefaultValidationHandler implements CDAUtil.ValidationHandler {
     private static final Logger LOG = LoggerFactory.getLogger(DefaultValidationHandler.class.getName());
-    
+
     @Override
     public void handleError(Diagnostic diagnostic) {
         LOG.error("Validation error: {}", diagnostic);

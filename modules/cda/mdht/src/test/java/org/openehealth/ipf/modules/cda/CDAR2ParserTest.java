@@ -17,10 +17,10 @@ package org.openehealth.ipf.modules.cda;
 
 import java.io.InputStream;
 
+import org.eclipse.mdht.uml.cda.ClinicalDocument;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openhealthtools.mdht.uml.cda.ClinicalDocument;
 
 /**
  * @author Christian Ohr

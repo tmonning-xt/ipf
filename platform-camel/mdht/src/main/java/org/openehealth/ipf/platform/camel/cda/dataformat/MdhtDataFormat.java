@@ -20,9 +20,9 @@ import java.io.OutputStream;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.spi.DataFormat;
+import org.eclipse.mdht.uml.cda.ClinicalDocument;
 import org.openehealth.ipf.modules.cda.CDAR2Parser;
 import org.openehealth.ipf.modules.cda.CDAR2Renderer;
-import org.openhealthtools.mdht.uml.cda.ClinicalDocument;
 
 public class MdhtDataFormat implements DataFormat {
 
@@ -37,8 +37,7 @@ public class MdhtDataFormat implements DataFormat {
     @Override
     public void marshal(Exchange exchange, Object graph, OutputStream stream)
             throws Exception {
-        renderer.render((ClinicalDocument) graph, stream,
-                (Object[]) null);
+        renderer.render((ClinicalDocument) graph, stream, (Object[]) null);
     }
 
     @Override

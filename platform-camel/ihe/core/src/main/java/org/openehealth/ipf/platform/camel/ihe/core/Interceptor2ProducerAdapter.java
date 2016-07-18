@@ -49,11 +49,13 @@ public class Interceptor2ProducerAdapter implements Producer, DelegateProcessor,
     }
 
     @Override
+    @Deprecated
     public Exchange createExchange() {
         return originalProducer.createExchange();
     }
 
     @Override
+    @Deprecated
     public Exchange createExchange(ExchangePattern pattern) {
         return originalProducer.createExchange(pattern);
     }

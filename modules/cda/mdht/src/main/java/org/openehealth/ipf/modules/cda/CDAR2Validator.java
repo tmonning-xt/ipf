@@ -17,11 +17,10 @@ package org.openehealth.ipf.modules.cda;
 
 import java.util.Map;
 
+import org.eclipse.mdht.uml.cda.ClinicalDocument;
+import org.eclipse.mdht.uml.cda.util.CDAUtil;
 import org.openehealth.ipf.commons.core.modules.api.ValidationException;
 import org.openehealth.ipf.commons.core.modules.api.Validator;
-import org.openhealthtools.mdht.uml.cda.ClinicalDocument;
-import org.openhealthtools.mdht.uml.cda.util.CDAUtil;
-import org.openhealthtools.mdht.uml.cda.util.CDAUtil.ValidationHandler;
 
 /**
  * Validates a ClinicalDocuments instance for conformity against CDA and/or CCD
@@ -48,9 +47,9 @@ public class CDAR2Validator implements Validator<ClinicalDocument, Map<Object, O
      * @param context
      * @return Validation handler
      */
-    private ValidationHandler retrieveValidationHandler(Map<Object, Object> context) {
+    private CDAUtil.ValidationHandler retrieveValidationHandler(Map<Object, Object> context) {
         if (context != null) {
-            ValidationHandler handler = (ValidationHandler) context.get(ValidationHandler.class);
+            CDAUtil.ValidationHandler handler = (CDAUtil.ValidationHandler) context.get(CDAUtil.ValidationHandler.class);
             if (handler != null) {
                 return handler;
             }

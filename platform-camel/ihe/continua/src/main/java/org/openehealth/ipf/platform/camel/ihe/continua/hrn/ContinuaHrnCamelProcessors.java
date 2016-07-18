@@ -15,7 +15,6 @@
  */
 package org.openehealth.ipf.platform.camel.ihe.continua.hrn;
 
-import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.openehealth.ipf.commons.core.modules.api.ValidationException;
 import org.openehealth.ipf.commons.ihe.core.IpfInteractionId;

@@ -25,13 +25,13 @@ import javax.xml.transform.Result;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.mdht.uml.cda.CDAFactory;
+import org.eclipse.mdht.uml.cda.CDAPackage;
+import org.eclipse.mdht.uml.cda.ClinicalDocument;
+import org.eclipse.mdht.uml.cda.DocumentRoot;
+import org.eclipse.mdht.uml.cda.internal.resource.CDAResourceFactoryImpl;
 import org.openehealth.ipf.commons.core.modules.api.RenderException;
 import org.openehealth.ipf.commons.core.modules.api.Renderer;
-import org.openhealthtools.mdht.uml.cda.CDAFactory;
-import org.openhealthtools.mdht.uml.cda.CDAPackage;
-import org.openhealthtools.mdht.uml.cda.ClinicalDocument;
-import org.openhealthtools.mdht.uml.cda.DocumentRoot;
-import org.openhealthtools.mdht.uml.cda.internal.resource.CDAResourceFactoryImpl;
 
 /**
  * @author Christian Ohr
