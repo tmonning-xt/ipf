@@ -16,6 +16,7 @@
 
 package org.openehealth.ipf.commons.audit.queue;
 
+import lombok.NoArgsConstructor;
 import org.openehealth.ipf.commons.audit.AuditContext;
 import org.openehealth.ipf.commons.audit.AuditException;
 import org.slf4j.Logger;
@@ -24,6 +25,7 @@ import org.slf4j.MDC;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -39,12 +41,25 @@ import java.util.concurrent.TimeUnit;
  * @author Christian Ohr
  * @since 3.5
  */
+@NoArgsConstructor
 public class AsynchronousAuditMessageQueue extends AbstractAuditMessageQueue {
 
     private static final Logger LOG = LoggerFactory.getLogger(AsynchronousAuditMessageQueue.class);
 
     private ExecutorService executorService;
     private int shutdownTimeoutSeconds = 30;
+    
+    /**
+     * Create a AsynchronousAuditMessageQueue with a 1 worker thread and a
+     * automatic timeout handling to prevent thread is blocking endless.
+     * 
+     * @param asyncTimeoutoutSeconds The timeout after which the execution is
+     *                               interrupted, Use "-1" to disable the timeout.
+     */
+    public AsynchronousAuditMessageQueue(int asyncTimeoutSeconds) {
+        setExecutorService(new TimeoutThreadPoolExecutor(1, 1, Integer.MAX_VALUE, TimeUnit.SECONDS,
+                new LinkedBlockingQueue<>(), asyncTimeoutSeconds, TimeUnit.SECONDS));
+    }
 
     /**
      * Sets the executor service. If this is null (or not used), audit events are sent synchronously

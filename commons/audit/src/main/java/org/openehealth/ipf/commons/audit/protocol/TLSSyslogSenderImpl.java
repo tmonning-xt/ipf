@@ -123,10 +123,10 @@ public class TLSSyslogSenderImpl extends RFC5425Protocol implements AuditTransmi
                     auditContext.getAuditRepositoryHostName(),
                     auditContext.getAuditRepositoryPort());
             try {
-                doSend(auditContext, msgBytes);
                 if (LOG.isTraceEnabled()) {
                     LOG.trace(new String(msgBytes, StandardCharsets.UTF_8));
                 }
+                doSend(auditContext, msgBytes);
             } catch (SocketException | SocketTimeoutException e) {
                 try {
                     LOG.info("Failed to use existing TLS socket. Will create a new connection and retry.");
@@ -226,6 +226,7 @@ public class TLSSyslogSenderImpl extends RFC5425Protocol implements AuditTransmi
     protected void setSocketOptions(final Socket socket) throws SocketException {
         Objects.requireNonNull(socket);
         socket.setKeepAlive(DEFAULT_SOCKET_KEEPALIVE);
+        socket.setSendBufferSize(32 * 1024); //use 32kb for sendBuffer
     }
 
     /**

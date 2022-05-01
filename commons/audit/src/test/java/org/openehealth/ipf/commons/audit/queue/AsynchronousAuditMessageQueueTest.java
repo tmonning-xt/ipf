@@ -17,20 +17,31 @@
 package org.openehealth.ipf.commons.audit.queue;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Mockito;
+import org.openehealth.ipf.commons.audit.AuditContext;
+import org.openehealth.ipf.commons.audit.AuditException;
 import org.openehealth.ipf.commons.audit.DefaultAuditContext;
+import org.openehealth.ipf.commons.audit.handler.AuditExceptionHandler;
 import org.openehealth.ipf.commons.audit.marshal.dicom.Current;
 import org.openehealth.ipf.commons.audit.model.AuditMessage;
 import org.openehealth.ipf.commons.audit.protocol.AuditTransmissionProtocol;
 
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.timeout;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 /**
  *
  */
 public class AsynchronousAuditMessageQueueTest {
-
+    
     @Test
     public void sendMessageWithoutExecutor() throws Exception {
         final var messageSender = mock(AuditTransmissionProtocol.class);
@@ -60,9 +71,38 @@ public class AsynchronousAuditMessageQueueTest {
             var auditMessage = someAuditEventMessage();
             context.audit(auditMessage);
 
-            Thread.sleep(500);
-            verify(messageSender).send(context, Current.toString(auditMessage, false));
+            verify(messageSender, timeout(500).times(1)).send(context, Current.toString(auditMessage, false));
             verifyNoMoreInteractions(messageSender);
+        } finally {
+            queue.shutdown();
+        }
+    }
+    
+    @Test
+    public void sendMessageWithTimeout() throws Exception {
+        final var messageSender = mock(AuditTransmissionProtocol.class);
+        final var context = new DefaultAuditContext();
+        context.setAuditEnabled(true);
+        var queue = new AsynchronousAuditMessageQueue(2);
+        context.setAuditMessageQueue(queue);
+        AuditExceptionHandler captureFailure = mock(AuditExceptionHandler.class);
+        ArgumentCaptor<Exception> valueCapture = ArgumentCaptor.forClass(Exception.class);
+        Mockito.doNothing().when(captureFailure).handleException(Mockito.any(AuditContext.class),
+                valueCapture.capture(), Mockito.anyString());
+        context.setAuditExceptionHandler(captureFailure);
+        context.setAuditTransmissionProtocol(messageSender);
+        try {
+            var auditMessage = someAuditEventMessage();
+            String auditString = Current.toString(auditMessage, false);
+            doAnswer((invocation) -> {
+                TimeUnit.SECONDS.sleep(5);
+                return null;
+            }).when(messageSender).send(context, auditString);
+            context.audit(auditMessage);
+
+            verify(captureFailure, timeout(4000).times(1)).handleException(Mockito.eq(context),
+                    Mockito.any(Exception.class), Mockito.eq(auditString));
+            assertEquals(AuditException.class, valueCapture.getValue().getCause().getClass());
         } finally {
             queue.shutdown();
         }
