@@ -65,6 +65,8 @@ public abstract class AbstractFhirAuditStrategy<T extends FhirAuditDataset, O ex
             auditDataset.setEventOutcomeIndicator(eventOutcomeIndicator);
             auditDataset.setEventOutcomeDescription(getEventOutcomeDescription(auditDataset, response));
             return eventOutcomeIndicator == EventOutcomeIndicator.Success;
+        } else if (response == null) {
+            auditDataset.setEventOutcomeIndicator(EventOutcomeIndicator.Success);
         }
         return true;
     }
